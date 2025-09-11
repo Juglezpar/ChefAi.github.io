@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChefAi - Tu Chef Personal con Inteligencia Artificial</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo-icon {
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+      }
+
+      .logo h1 {
+        color: #2c3e50;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #2c3e50;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        background: #667eea;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .hero {
+        padding: 100px 0;
+        text-align: center;
+        color: white;
+      }
+
+      .hero h2 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+        opacity: 0.9;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        color: white;
+        padding: 18px 40px;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      .features {
+        padding: 100px 0;
+        background: white;
+      }
+
+      .features h3 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 60px;
+        color: #2c3e50;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-bottom: 80px;
+      }
+
+      .feature-card {
+        background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+        padding: 40px 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .feature-icon {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .feature-card h4 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #2c3e50;
+      }
+
+      .feature-card p {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .how-it-works {
+        padding: 100px 0;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+      }
+
+      .how-it-works h3 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 60px;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+      }
+
+      .step {
+        text-align: center;
+        padding: 20px;
+      }
+
+      .step-number {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0 auto 20px;
+        backdrop-filter: blur(10px);
+      }
+
+      .step h4 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+
+      .pricing {
+        padding: 100px 0;
+        background: #f8f9fa;
+        border-top: 2px solid #000;
+      }
+
+      .pricing h3 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 60px;
+        color: #000;
+      }
+
+      .pricing-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .pricing-card {
+        background: white;
+        border: 2px solid #e9ecef;
+        border-radius: 12px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .pricing-card.premium {
+        border-color: #000;
+        transform: scale(1.05);
+        background: #000;
+        color: white;
+      }
+
+      .pricing-card.premium::before {
+        content: "Más Popular";
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: white;
+        color: #000;
+        padding: 8px 20px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 2px solid #000;
+      }
+
+      .pricing-card:hover {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+        border-color: #000;
+      }
+
+      .pricing-card.premium:hover {
+        transform: scale(1.05) translateY(-5px);
+      }
+
+      .plan-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #000;
+      }
+
+      .pricing-card.premium .plan-name {
+        color: white;
+      }
+
+      .plan-price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 30px;
+      }
+
+      .pricing-card.premium .plan-price {
+        color: white;
+      }
+
+      .plan-features {
+        list-style: none;
+        margin-bottom: 30px;
+      }
+
+      .plan-features li {
+        padding: 8px 0;
+        border-bottom: 1px solid #f8f9fa;
+      }
+
+      .pricing-card.premium .plan-features li {
+        border-bottom: 1px solid #333;
+      }
+
+      .plan-features li:last-child {
+        border-bottom: none;
+      }
+
+      .contact {
+        padding: 80px 0;
+        background: #000;
+        color: white;
+        text-align: center;
+      }
+
+      .contact h3 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+      }
+
+      .contact p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+      }
+
+      .contact-info {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      .contact-item {
+        background: white;
+        color: #000;
+        padding: 20px;
+        border-radius: 10px;
+        border: 2px solid white;
+      }
+
+      footer {
+        background: #333;
+        color: white;
+        padding: 40px 0;
+        text-align: center;
+        border-top: 2px solid #000;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .footer-links a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+      }
+
+      .footer-links a:hover {
+        background: white;
+        color: #000;
+        border: 1px solid white;
+      }
+
+      @media (max-width: 768px) {
+        .hero h2 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .nav-links {
+          gap: 15px;
+        }
+
+        .contact-info {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .pricing-card.premium {
+          transform: none;
+        }
+
+        .pricing-card.premium:hover {
+          transform: translateY(-5px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <div class="logo-icon">🍳</div>
+            <h1>ChefAi</h1>
+          </div>
+          <nav>
+            <ul class="nav-links">
+              <li><a href="#features">Características</a></li>
+              <li><a href="#how-it-works">Cómo Funciona</a></li>
+              <li><a href="#pricing">Precios</a></li>
+              <li><a href="#contact">Contacto</a></li>
+              <li><a href="privacy-policy">Privacidad</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <h2>Tu Chef Personal con Inteligencia Artificial</h2>
+          <p>
+            Genera recetas personalizadas basadas en los ingredientes de tu
+            despensa. ChefAi utiliza IA avanzada para crear comidas deliciosas
+            adaptadas a tu dieta y preferencias.
+          </p>
+          <a href="#features" class="cta-button">Descubre ChefAi</a>
+        </div>
+      </section>
+
+      <section id="features" class="features">
+        <div class="container">
+          <h3>Características Principales</h3>
+          <div class="features-grid">
+            <div class="feature-card">
+              <span class="feature-icon">📸</span>
+              <h4>Análisis de Imágenes con IA</h4>
+              <p>
+                Escanea fotos de tu nevera o ingredientes y nuestra IA los
+                identificará automáticamente para generar recetas perfectas.
+              </p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🥗</span>
+              <h4>Recetas Personalizadas</h4>
+              <p>
+                Recetas adaptadas a tu dieta (vegetariana, vegana, sin gluten),
+                número de personas y objetivos calóricos específicos.
+              </p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🗓️</span>
+              <h4>Gestión de Despensa</h4>
+              <p>
+                Organiza tus ingredientes por fecha de caducidad y recibe
+                sugerencias para aprovechar productos próximos a vencer.
+              </p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">⭐</span>
+              <h4>Recetas Favoritas</h4>
+              <p>
+                Guarda tus recetas preferidas y accede a ellas cuando quieras.
+                Perfecto para comidas que te encantaron.
+              </p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">🌍</span>
+              <h4>Multiidioma</h4>
+              <p>
+                Disponible en español e inglés para que puedas usar ChefAi en tu
+                idioma preferido.
+              </p>
+            </div>
+            <div class="feature-card">
+              <span class="feature-icon">💎</span>
+              <h4>Funciones Premium</h4>
+              <p>
+                Accede a recetas premium, información nutricional detallada,
+                maridajes y consejos de chef profesional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="how-it-works">
+        <div class="container">
+          <h3>¿Cómo Funciona ChefAi?</h3>
+          <div class="steps">
+            <div class="step">
+              <div class="step-number">1</div>
+              <h4>Añade Ingredientes</h4>
+              <p>
+                Escanea tu nevera con la cámara o añade ingredientes manualmente
+                a tu despensa virtual.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">2</div>
+              <h4>Configura Preferencias</h4>
+              <p>
+                Selecciona tu dieta, número de personas, calorías objetivo y
+                cualquier restricción alimentaria.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <h4>Genera Recetas</h4>
+              <p>
+                Nuestra IA crea recetas personalizadas usando tus ingredientes
+                disponibles y preferencias.
+              </p>
+            </div>
+            <div class="step">
+              <div class="step-number">4</div>
+              <h4>Cocina y Disfruta</h4>
+              <p>
+                Sigue las instrucciones paso a paso y disfruta de comidas
+                deliciosas y personalizadas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="pricing">
+        <div class="container">
+          <h3>Planes Disponibles</h3>
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="plan-name">Plan Gratuito</div>
+              <div class="plan-price">€0<small>/mes</small></div>
+              <ul class="plan-features">
+                <li>5 escaneos por mes</li>
+                <li>10 recetas por mes</li>
+                <li>Recetas básicas</li>
+                <li>Gestión de despensa</li>
+                <li>Soporte por email</li>
+              </ul>
+              <a href="#contact" class="cta-button">Comenzar Gratis</a>
+            </div>
+            <div class="pricing-card premium">
+              <div class="plan-name">Plan Premium</div>
+              <div class="plan-price">€3.99<small>/mes</small></div>
+              <ul class="plan-features">
+                <li>50 escaneos por mes</li>
+                <li>100 recetas por mes</li>
+                <li>Recetas premium elaboradas</li>
+                <li>Información nutricional detallada</li>
+                <li>Maridajes y consejos de chef</li>
+                <li>Soporte prioritario</li>
+                <li>Acceso anticipado a nuevas funciones</li>
+              </ul>
+              <a href="#contact" class="cta-button">Hazte Premium</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="container">
+          <h3>Contacto y Soporte</h3>
+          <p>
+            ¿Tienes alguna pregunta o necesitas ayuda? Estamos aquí para
+            ayudarte.
+          </p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <h4>📧 Email de Soporte</h4>
+              <p>juglezpar@gmail.com</p>
+            </div>
+            <div class="contact-item">
+              <h4>🌐 Desarrollador</h4>
+              <p>GitHub: juglezpar</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-links">
+          <a href="privacy-policy">Política de Privacidad</a>
+          <a href="terms-of-service">Términos de Servicio</a>
+          <a href="#contact">Contacto</a>
+          <a href="mailto:juglezpar@gmail.com">Soporte</a>
+        </div>
+        <p>
+          &copy; 2025 ChefAi. Todos los derechos reservados. Desarrollado con ❤️
+          para amantes de la cocina.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
