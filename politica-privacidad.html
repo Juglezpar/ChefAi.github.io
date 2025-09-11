@@ -132,6 +132,17 @@
           <strong>Contraseña cifrada</strong>: Almacenada de forma segura
           mediante algoritmos de encriptación
         </li>
+        <li>
+          <strong>Autenticación con Google</strong>: Cuando eliges iniciar
+          sesión con Google, recibimos tu dirección de correo electrónico e
+          información básica de perfil (nombre) de Google para crear y gestionar
+          tu cuenta
+        </li>
+        <li>
+          <strong>Tokens OAuth</strong>: Recibimos tokens seguros de
+          identificación de Google que nos permiten verificar tu identidad sin
+          almacenar tu contraseña de Google
+        </li>
       </ul>
 
       <h3>1.2 Información de Perfil</h3>
@@ -223,6 +234,11 @@
       <h3>2.3 Gestión de Cuenta</h3>
       <ul>
         <li>
+          <strong>Inicio de sesión con Google</strong>: Método alternativo de
+          autenticación segura que te permite usar tu cuenta existente de Google
+          en lugar de crear una contraseña separada
+        </li>
+        <li>
           <strong>Autenticación</strong>: Para permitir el acceso seguro a tu
           cuenta
         </li>
@@ -253,6 +269,30 @@
       </ul>
 
       <h3>3.2 Proveedores de Servicios de Confianza</h3>
+      <h4>Google (Servicio de Autenticación)</h4>
+      <ul>
+        <li>
+          <strong>Propósito</strong>: Autenticación segura de usuarios y
+          creación de cuentas mediante Google Sign-In
+        </li>
+        <li>
+          <strong>Datos recibidos</strong>: Dirección de correo electrónico,
+          nombre y tokens seguros de identificación
+        </li>
+        <li>
+          <strong>Scopes OAuth</strong>: Solo solicitamos acceso a tu
+          información básica de perfil (correo electrónico y nombre)
+        </li>
+        <li>
+          <strong>Seguridad</strong>: Autenticación gestionada a través del
+          protocolo seguro OAuth 2.0 de Google
+        </li>
+        <li>
+          <strong>Retención de datos</strong>: Solo almacenamos la información
+          necesaria para mantener tu cuenta; los tokens de autenticación no se
+          almacenan permanentemente
+        </li>
+      </ul>
 
       <h4>Supabase (Almacenamiento de Datos)</h4>
       <ul>

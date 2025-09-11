@@ -130,6 +130,16 @@
           <strong>Encrypted password</strong>: Stored securely using encryption
           algorithms
         </li>
+        <li>
+          <strong>Google Authentication</strong>: When you choose to sign in
+          with Google, we receive your email address and basic profile
+          information (name) from Google to create and manage your account
+        </li>
+        <li>
+          <strong>OAuth Tokens</strong>: We receive secure identification tokens
+          from Google that allow us to verify your identity without storing your
+          Google password
+        </li>
       </ul>
 
       <h3>1.2 Profile Information</h3>
@@ -218,6 +228,11 @@
       <h3>2.3 Account Management</h3>
       <ul>
         <li>
+          <strong>Google Sign-In</strong>: Alternative secure authentication
+          method that allows you to use your existing Google account instead of
+          creating a separate password
+        </li>
+        <li>
           <strong>Authentication</strong>: To allow secure access to your
           account
         </li>
@@ -249,6 +264,30 @@
       </ul>
 
       <h3>3.2 Trusted Service Providers</h3>
+      <h4>Google (Authentication Service)</h4>
+      <ul>
+        <li>
+          <strong>Purpose</strong>: Secure user authentication and account
+          creation via Google Sign-In
+        </li>
+        <li>
+          <strong>Data received</strong>: Email address, name, and secure
+          identification tokens
+        </li>
+        <li>
+          <strong>OAuth Scopes</strong>: We only request access to your basic
+          profile information (email and name)
+        </li>
+        <li>
+          <strong>Security</strong>: Authentication handled through Google's
+          secure OAuth 2.0 protocol
+        </li>
+        <li>
+          <strong>Data retention</strong>: We only store the necessary
+          information to maintain your account; authentication tokens are not
+          permanently stored
+        </li>
+      </ul>
 
       <h4>Supabase (Data Storage)</h4>
       <ul>
